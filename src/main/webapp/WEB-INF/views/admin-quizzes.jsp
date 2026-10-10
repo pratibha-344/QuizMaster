@@ -1,0 +1,10 @@
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ include file="includes/head.jspf" %><%@ include file="includes/nav.jspf" %>
+<section class="page-heading page-heading-row"><div><p class="eyebrow">CONTENT MANAGEMENT</p><h1>Quiz library</h1><p class="muted">Create, update, publish, and organize your quizzes.</p></div><a class="button button-primary" href="<c:url value='/admin/quizzes/new' />">Create quiz <span aria-hidden="true">+</span></a></section>
+<c:choose><c:when test="${empty quizzes}"><div class="empty-state"><strong>Your quiz library is ready</strong><p>Add your first quiz to get started.</p><a class="button button-primary" href="<c:url value='/admin/quizzes/new' />">Create quiz</a></div></c:when><c:otherwise>
+<div class="table-wrap"><table><thead><tr><th>Quiz</th><th>Questions</th><th>Time</th><th>Status</th><th>Manage</th></tr></thead><tbody>
+<c:forEach var="quiz" items="${quizzes}"><tr><td class="table-primary"><c:out value="${quiz.title}" /><span class="table-subtitle"><c:out value="${quiz.description}" /></span></td><td><c:out value="${quiz.questionCount}" /></td><td><c:out value="${quiz.timeLimitMinutes}" /> min</td><td><c:choose><c:when test="${quiz.published}"><span class="status status-live">Published</span></c:when><c:otherwise><span class="status status-draft">Draft</span></c:otherwise></c:choose></td>
+<td><div class="table-actions"><a class="text-link" href="<c:url value='/admin/questions?quizId=${quiz.id}' />">Questions</a><a class="text-link" href="<c:url value='/admin/quizzes/edit?id=${quiz.id}' />">Edit</a>
+<form action="<c:url value='/admin/quizzes/delete' />" method="post" data-confirm="Delete this quiz and its saved results? This cannot be undone."><input type="hidden" name="_csrf" value="<c:out value='${csrfToken}' />"><input type="hidden" name="quizId" value="<c:out value='${quiz.id}' />"><button class="text-button danger-text" type="submit">Delete</button></form></div></td></tr></c:forEach>
+</tbody></table></div></c:otherwise></c:choose>
+<%@ include file="includes/foot.jspf" %>

@@ -1,0 +1,6 @@
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+</main>
+<footer class="footer"><span>QuizMaster</span><span>Learn a little more with every attempt.</span></footer>
+<script src="<c:url value='/assets/app.js' />" defer></script>
+</body>
+</html>

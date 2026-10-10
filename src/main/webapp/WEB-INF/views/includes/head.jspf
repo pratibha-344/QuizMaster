@@ -1,0 +1,11 @@
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10172c">
+  <title><c:out value="${pageTitle}" default="QuizMaster" /> · QuizMaster</title>
+  <link rel="stylesheet" href="<c:url value='/assets/app.css' />">
+</head>
+<body>

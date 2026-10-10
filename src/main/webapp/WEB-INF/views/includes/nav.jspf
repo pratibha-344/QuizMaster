@@ -1,0 +1,35 @@
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<header class="topbar">
+  <a class="brand" href="<c:url value='/' />"><span class="brand-mark">Q</span><span>quizmaster</span></a>
+  <c:if test="${not empty currentUser}">
+    <nav class="main-nav" aria-label="Main navigation">
+      <c:choose>
+        <c:when test="${currentUser.admin}">
+          <a href="<c:url value='/admin/dashboard' />">Overview</a>
+          <a href="<c:url value='/admin/quizzes' />">Quizzes</a>
+          <a href="<c:url value='/admin/students' />">Students</a>
+          <a href="<c:url value='/admin/results' />">Results</a>
+        </c:when>
+        <c:otherwise>
+          <a href="<c:url value='/student/dashboard' />">Overview</a>
+          <a href="<c:url value='/student/quizzes' />">Quizzes</a>
+          <a href="<c:url value='/student/results' />">My results</a>
+          <a href="<c:url value='/student/leaderboard' />">Leaderboard</a>
+          <a href="<c:url value='/student/profile' />">Profile</a>
+        </c:otherwise>
+      </c:choose>
+    </nav>
+    <div class="nav-account">
+      <span class="nav-name"><c:out value="${currentUser.fullName}" /></span>
+      <form action="<c:url value='/logout' />" method="post">
+        <input type="hidden" name="_csrf" value="<c:out value='${csrfToken}' />">
+        <button class="button button-quiet button-small" type="submit">Log out</button>
+      </form>
+    </div>
+  </c:if>
+  <c:if test="${empty currentUser}">
+    <a class="button button-small button-outline topbar-join" href="<c:url value='/register' />">Create account</a>
+  </c:if>
+</header>
+<main class="page-shell">
+  <%@ include file="flash.jspf" %>

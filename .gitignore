@@ -1,0 +1,38 @@
+target/
+.idea/
+.vscode/
+*.iml
+.env
+.mysql-data/
+# Java and Maven build files
+target/
+*.class
+
+# Mac and editor files
+.DS_Store
+.idea/
+.vscode/
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+# Java and Maven build files
+target/
+*.class
+
+# Mac and editor files
+.DS_Store
+.idea/
+.vscode/
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log

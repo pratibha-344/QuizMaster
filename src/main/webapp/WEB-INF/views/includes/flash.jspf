@@ -1,0 +1,7 @@
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<c:if test="${not empty flashMessage}">
+  <div class="notice notice-${flashType}" role="status"><c:out value="${flashMessage}" /></div>
+</c:if>
+<c:if test="${not empty formError}">
+  <div class="notice notice-error" role="alert"><c:out value="${formError}" /></div>
+</c:if>
